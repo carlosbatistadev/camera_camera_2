@@ -3,18 +3,19 @@ description: The easy plugin camera for your project, platforms Android and iOS.
 version: 2.0.1-dev0.2
 repository: https://github.com/yassinedevop/camera_camera-master
 environment:
-  sdk: ">=2.12.0-0.0 <3.0.0"
+  sdk: ">=2.12.0 <3.0.0"
 
 dependencies:
+  cupertino_icons: ^1.0.8
   camera: ^0.8.0-nullsafety.2
-  rxdart: ^0.26.0
+  rxdart: ^0.27.5
   flutter:
     sdk: flutter
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  mocktail: ^0.0.1-dev.11
+  mocktail: ^1.0.4
 
 # For information on the generic Dart part of this file, see the
 # following page: https://www.dartlang.org/tools/pub/pubspec

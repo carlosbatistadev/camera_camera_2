@@ -25,12 +25,6 @@ void main() {
 
   group("Test CameraBloc", () {
     test("Get AvailableCameras - success", () {
-      when(service).calls(#getCameras).thenReturn((_) => Future.value([
-            CameraDescription(
-                name: "teste",
-                sensorOrientation: 0,
-                lensDirection: CameraLensDirection.back)
-          ]));
       controller.getAvailableCameras();
       controller.statusStream.listen(print);
       expectLater(
@@ -42,7 +36,6 @@ void main() {
     });
 
     test("Get AvailableCameras - failure", () {
-      when(service).calls(#getCameras).thenThrow(CameraException("0", "error"));
       controller.getAvailableCameras();
 
       expectLater(
@@ -53,12 +46,6 @@ void main() {
     });
 
     test("changeCamera when status is CameraStatusSuccess", () async {
-      when(service).calls(#getCameras).thenAnswer((_) => Future.value([
-            CameraDescription(
-                name: "teste",
-                sensorOrientation: 0,
-                lensDirection: CameraLensDirection.back)
-          ]));
       controller.getAvailableCameras();
       controller.statusStream.listen((state) => state.when(
           success: (_) {
@@ -76,16 +63,6 @@ void main() {
     });
 
     test("changeCamera for next camera", () async {
-      when(service).calls(#getCameras).thenAnswer((_) => Future.value([
-            CameraDescription(
-                name: "teste",
-                sensorOrientation: 0,
-                lensDirection: CameraLensDirection.back),
-            CameraDescription(
-                name: "teste",
-                sensorOrientation: 0,
-                lensDirection: CameraLensDirection.back)
-          ]));
       controller.getAvailableCameras();
       controller.statusStream.listen((state) => state.when(
           success: (_) {
@@ -106,16 +83,6 @@ void main() {
     });
 
     test("changeCamera for next camera and return index 0", () async {
-      when(service).calls(#getCameras).thenAnswer((_) => Future.value([
-            CameraDescription(
-                name: "teste",
-                sensorOrientation: 0,
-                lensDirection: CameraLensDirection.back),
-            CameraDescription(
-                name: "teste",
-                sensorOrientation: 0,
-                lensDirection: CameraLensDirection.back)
-          ]));
       controller.getAvailableCameras();
       controller.statusStream.listen((state) => state.when(
           success: (_) {
